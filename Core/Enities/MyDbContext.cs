@@ -31,6 +31,16 @@ namespace Core.Enities
                 .HasOne(pt => pt.TFavoriteNews)
                 .WithMany(t => t.TLoginFavNews)
                 .HasForeignKey(pt => pt.TFavoriteNewsId);
+
+            //odelBuilder.Entity<TLogin>()
+            //    .HasMany(a => a.TFavoriteNews)
+            //    .WithMany(p => p.)
+            //    .Map(x =>
+            //    {
+            //        x.MapLeftKey("Account_Id");
+            //        x.MapRightKey("Product_Id");
+            //        x.ToTable("AccountProducts");
+            //    });
         }
         public DbSet<TFavoriteNews> TFavoriteNews { get; set; }
         public DbSet<TLogin> TLogin { get; set; }
@@ -83,6 +93,7 @@ namespace Core.Enities
         public TFavoriteNews TFavoriteNews { get; set; }
     }
 
+
     public class TFavoriteWords
     {
         public int ID { get; set; }
@@ -91,7 +102,7 @@ namespace Core.Enities
         [Description("если false значит минус-стоп-слово ")]
         public bool IsMust { get; set; }
 
-        public int LoginId { get; set; }
+        public int TLoginId { get; set; }
         public TLogin TLogin { get; set; }
 
     }

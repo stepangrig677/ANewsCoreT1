@@ -8,9 +8,10 @@ using Core.Enities;
 namespace Core.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170101071748_init2_with_TLoginFavNews")]
+    partial class init2_with_TLoginFavNews
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
@@ -39,11 +40,13 @@ namespace Core.Migrations
 
                     b.Property<bool>("IsMust");
 
-                    b.Property<int>("TLoginId");
+                    b.Property<int>("LoginId");
+
+                    b.Property<int?>("TLoginID");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("TLoginId");
+                    b.HasIndex("TLoginID");
 
                     b.ToTable("TFavoriteWords");
                 });
@@ -97,8 +100,7 @@ namespace Core.Migrations
                 {
                     b.HasOne("Core.Enities.TLogin", "TLogin")
                         .WithMany("TFavoriteWords")
-                        .HasForeignKey("TLoginId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TLoginID");
                 });
 
             modelBuilder.Entity("Core.Enities.TLoginFavNews", b =>

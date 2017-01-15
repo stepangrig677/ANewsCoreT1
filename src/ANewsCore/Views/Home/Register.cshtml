@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group has-feedback">
+        <input type="text" name="Name" />
+<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+    </div>
+        
+        <input type="text" name="TFavoriteNews.Link" />
+        
+    <div class="row">
+        <div class="col-xs-5">
+            <a href="@Url.Action("Login", "Account")" class="small">Войти</a>
+        </div>
+        <div class="col-xs-7">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Зарегистрироваться</button>
+        </div>
+    </div>
+}
+    @*<div class="form-group has-feedback">
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Пароль", required = "required" })
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+    </div>*@
+
+    <div class="row">
+        <div class="col-xs-8">
+            @*
+                <div class="checkbox icheck">
+                    <label>
+                        <input type="checkbox"> Запомнить меня
+                    </label>
+                </div>
+            *@
+            <a href="@Url.Action("Register", "Account")" class="small">Зарегистрироваться</a><br>
+            <a href="@Url.Action("Restore", "Account")" class="small">Восстановить пароль</a>
+        </div>
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Войти</button>
+        </div>
+    </div>
+}
